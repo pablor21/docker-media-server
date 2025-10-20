@@ -85,8 +85,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-    env_file:
-      - .env
+      - TRANSMISSION_RPC_USERNAME=${TRANSMISSION_RPC_USERNAME}
+      - TRANSMISSION_RPC_PASSWORD=${TRANSMISSION_RPC_PASSWORD}
+      - TRANSMISSION_RPC_AUTHENTICATION_REQUIRED=${TRANSMISSION_RPC_AUTHENTICATION_REQUIRED}
     volumes:
       - ./data/transmission/config:/config
       - downloads:/downloads
