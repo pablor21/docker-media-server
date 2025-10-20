@@ -57,6 +57,8 @@ services:
     # ports:
     #   - 8989:8989
     restart: unless-stopped
+    networks:
+      - media_network
   jackett:
     image: linuxserver/jackett:latest
     container_name: jackett
@@ -69,6 +71,8 @@ services:
     # ports:
     #   - 9117:9117
     restart: unless-stopped
+    networks:
+      - media_network
 
   transmission:
     image: linuxserver/transmission:latest
@@ -85,6 +89,13 @@ services:
     #   - 51413:51413
     #   - 51413:51413/udp
     restart: unless-stopped
+    networks:
+      - media_network
+networks: 
+  media_network:
+    name: ${MEDIA_NETWORK_NAME}
+    external: ${MEDIA_NETWORK_EXTERNAL:false}
+    driver: bridge  # only used if external=false (Compose creates the network)
 volumes:
   downloads:  
      driver: local
