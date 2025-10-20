@@ -94,7 +94,7 @@ services:
 networks: 
   media_network:
     name: ${MEDIA_NETWORK_NAME}
-    external: ${MEDIA_NETWORK_EXTERNAL:false}
+    external: ${MEDIA_NETWORK_EXTERNAL:-false}
     driver: bridge  # only used if external=false (Compose creates the network)
 volumes:
   downloads:  
