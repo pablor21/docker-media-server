@@ -29,6 +29,8 @@ services:
     #   - 8096:8096
     #   - 8920:8920
     restart: unless-stopped
+    networks:
+      - media_network
 
   radarr:
     image: linuxserver/radarr:latest
@@ -43,6 +45,8 @@ services:
     # ports:
     #   - 7878:7878
     restart: unless-stopped
+    networks:
+      - media_network
 
   sonarr:
     image: linuxserver/sonarr:latest
